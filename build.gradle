@@ -1,8 +1,12 @@
 apply plugin: 'java'
+apply plugin: 'idea'
 
 jar {
   baseName = 'pokedex-api'
   version = '0.1.0'
+  manifest {
+    attributes 'Main-Class': 'pokedex.App'
+  }
 }
 
 sourceCompatibility = 1.8
@@ -13,9 +17,9 @@ repositories {
 }
 
 dependencies {
-  testCompile("junit:junit")
+  compile group: 'org.glassfish.jersey.core', name: 'jersey-server', version:'2.22.2'
+  compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-grizzly2-http', version:'2.22.2'
+  testCompile group: 'org.glassfish.jersey.test-framework', name: 'jersey-test-framework-util', version:'2.22.2'
+  testCompile group: 'org.glassfish.jersey.test-framework.providers', name: 'jersey-test-framework-provider-bundle', version:'2.22.2'
 }
 
-task wrapper(type: Wrapper) {
-  gradleVersion = '2.9'
-}

@@ -1,2 +1,7 @@
 .gradle
+gradle
 build
+out
+pokedex-api-java.iml
+pokedex-api-java.ipr
+pokedex-api-java.iws
