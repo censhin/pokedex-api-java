@@ -17,7 +17,7 @@ public class App {
         try {
             System.out.println("Starting Pokedex API");
 
-            final PokedexResources resourceConfig = new PokedexResources();
+            final PokedexResourceConfig resourceConfig = new PokedexResourceConfig();
             final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, resourceConfig, false);
             Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
                 @Override
