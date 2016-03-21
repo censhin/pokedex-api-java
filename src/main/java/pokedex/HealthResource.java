@@ -7,8 +7,8 @@ import javax.ws.rs.Produces;
 @Path("healthcheck")
 public class HealthResource {
 
-  @GET
-  @Produces("text/plain")
-  public String getHealthCheck() { return "I'm alive!"; }
+    @GET
+    @Produces("text/plain")
+    public String getHealthCheck() { return "I'm alive!"; }
 
 }
