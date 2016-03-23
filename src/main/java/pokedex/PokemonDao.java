@@ -1,5 +1,6 @@
 package pokedex;
 
+import java.util.List;
 import java.util.ArrayList;
 
 import org.bson.Document;
@@ -9,12 +10,12 @@ import com.mongodb.client.MongoCursor;
 
 public class PokemonDao {
 
-    private static MongoClient mongoClient = new MongoClient();
-    private static MongoDatabase db = mongoClient.getDatabase("pokedex");
+    private static MongoClient client = new MongoClient();
+    private static MongoDatabase db = client.getDatabase("pokedex");
 
-    public static ArrayList<String> get() {
+    public static List<Pokemon> get() {
         MongoCursor<Document> cursor = db.getCollection("pokemon").find().iterator();
-        ArrayList<String> data = new ArrayList<String>();
+        List<Pokemon> data = new ArrayList<>();
 
         try {
             while (cursor.hasNext()) {
