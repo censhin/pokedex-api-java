@@ -1,11 +1,11 @@
 package pokedex;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class Pokemon {
+public class PokemonService {
 
     public static String get() {
-        ArrayList<String> pokemon = PokemonDao.get();
+        List<Pokemon> pokemon = PokemonDao.get();
         return "{\"pokemon\": " + pokemon + "}";
     }
 
