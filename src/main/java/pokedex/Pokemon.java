@@ -51,111 +51,171 @@ public class Pokemon {
 
     public String getName() { return this.name; }
 
-    public void setName(String name) { this.name = name; }
+    public Pokemon setName(String name) {
+        this.name = name;
+        return this;
+    }
 
     public int getNumber() { return this.number; }
 
-    public void setNumber(int number) { this.number = number; }
+    public Pokemon setNumber(int number) {
+        this.number = number;
+        return this;
+    }
 
     public int getGeneration() { return this.generation; }
 
-    public void setGeneration(int generation) { this.generation = generation; }
+    public Pokemon setGeneration(int generation) {
+        this.generation = generation;
+        return this;
+    }
 
     public GenderRatio getGenderRatio() { return this.genderRatio; }
 
-    public void setGenderRatio(GenderRatio genderRatio) { this.genderRatio = genderRatio; }
+    public Pokemon setGenderRatio(GenderRatio genderRatio) {
+        this.genderRatio = genderRatio;
+        return this;
+    }
 
     public List<String> getTypes() { return this.types; }
 
-    public void setTypes(List<String> types) { this.types = types; }
+    public Pokemon setTypes(List<String> types) {
+        this.types = types;
+        return this;
+    }
 
     public String getClassification() { return this.classification; }
 
-    public void setClassification(String classification) { this.classification = classification; }
+    public Pokemon setClassification(String classification) {
+        this.classification = classification;
+        return this;
+    }
 
     public String getHeight() { return this.height; }
 
-    public void setHeight(String height) { this.height = height; }
+    public Pokemon setHeight(String height) {
+        this.height = height;
+        return this;
+    }
 
     public String getWeight() { return this.weight; }
 
-    public void setWeight(String weight) { this.weight = weight; }
+    public Pokemon setWeight(String weight) {
+        this.weight = weight;
+        return this;
+    }
 
     public int getCaptureRate() { return this.captureRate; }
 
-    public void setCaptureRate(int captureRate) { this.captureRate = captureRate; }
+    public Pokemon setCaptureRate(int captureRate) {
+        this.captureRate = captureRate;
+        return this;
+    }
 
     public int getBaseEggSteps() { return this.baseEggSteps; }
 
-    public void setBaseEggSteps(int baseEggSteps) { this.baseEggSteps = baseEggSteps; }
+    public Pokemon setBaseEggSteps(int baseEggSteps) {
+        this.baseEggSteps = baseEggSteps;
+        return this;
+    }
 
     public List<String> getAbilities() { return this.abilities; }
 
-    public void setAbilities(List<String> abilities) { this.abilities = abilities; }
+    public Pokemon setAbilities(List<String> abilities) {
+        this.abilities = abilities;
+        return this;
+    }
 
     public ExperienceGrowth getExperienceGrowth() { return this.experienceGrowth; }
 
-    public void setExperienceGrowth(ExperienceGrowth experienceGrowth) { this.experienceGrowth = experienceGrowth; }
+    public Pokemon setExperienceGrowth(ExperienceGrowth experienceGrowth) {
+        this.experienceGrowth = experienceGrowth;
+        return this;
+    }
 
     public int getBaseHappiness() { return this.baseHappiness; }
 
-    public void setBaseHappiness(int baseHappiness) { this.baseHappiness = baseHappiness; }
+    public Pokemon setBaseHappiness(int baseHappiness) {
+        this.baseHappiness = baseHappiness;
+        return this;
+    }
 
     public EffortValues getEv() { return this.ev; }
 
-    public void setEv(EffortValues ev) { this.ev = ev; }
+    public Pokemon setEv(EffortValues ev) {
+        this.ev = ev;
+        return this;
+    }
 
     public boolean isSkyBattleEligible() { return this.skyBattleEligible; }
 
-    public void setSkyBattleEligible(boolean skyBattleEligible) { this.skyBattleEligible = skyBattleEligible; }
+    public Pokemon setSkyBattleEligible(boolean skyBattleEligible) {
+        this.skyBattleEligible = skyBattleEligible;
+        return this;
+    }
 
     public String getWildHoldItem() { return this.wildHoldItem; }
 
-    public void setWildHoldItem(String wildHoldItem) { this.wildHoldItem = wildHoldItem; }
+    public Pokemon setWildHoldItem(String wildHoldItem) {
+        this.wildHoldItem = wildHoldItem;
+        return this;
+    }
 
     public List<String> getEggGroups() { return this.eggGroups; }
 
-    public void setEggGroups(List<String> eggGroups) { this.eggGroups = eggGroups; }
+    public Pokemon setEggGroups(List<String> eggGroups) {
+        this.eggGroups = eggGroups;
+        return this;
+    }
 
     public Evolution getEvolution() { return this.evolution; }
 
-    public void setEvolution(Evolution evolution) { this.evolution = evolution; }
+    public Pokemon setEvolution(Evolution evolution) {
+        this.evolution = evolution;
+        return this;
+    }
 
     public List<Locations> getLocations() { return this.locations; }
 
-    public void setLocations(List<Locations> locations) { this.locations = locations; }
+    public Pokemon setLocations(List<Locations> locations) {
+        this.locations = locations;
+        return this;
+    }
 
     public BaseStats getBaseStats() { return this.baseStats; }
 
-    public void setBaseStats(BaseStats baseStats) { this.baseStats = baseStats; }
+    public Pokemon setBaseStats(BaseStats baseStats) {
+        this.baseStats = baseStats;
+        return this;
+    }
 
-    private class GenderRatio {
+    public class GenderRatio {
         private float male;
         private float female;
     }
 
-    private class ExperienceGrowth {
+    public class ExperienceGrowth {
         private int points;
         private String rate;
     }
 
-    private class EffortValues {
+    public class EffortValues {
         private String type;
         private int value;
     }
 
-    private class Evolution {
+    public class Evolution {
         private String name;
         private int number;
         private int level;
     }
 
-    private class Locations {
+    public class Locations {
         private String game;
         private String location;
     }
 
-    private class BaseStats {
+    public class BaseStats {
         private int hp;
         private int attack;
         private int defense;
