@@ -32,7 +32,7 @@ public class PokemonDao {
         poke.setName(doc.getString("name"))
             .setNumber(doc.getInteger("number"))
             .setGeneration(doc.getInteger("generation"))
-//            .setGenderRatio(doc.get("genderRatio"));
+            .setGenderRatio(doc.get("genderRatio"))
 //            .setTypes(doc.get("types", List<String>));
             .setClassification(doc.getString("classification"))
             .setHeight(doc.getString("height"))

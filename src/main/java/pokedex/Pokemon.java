@@ -72,7 +72,12 @@ public class Pokemon {
 
     public GenderRatio getGenderRatio() { return this.genderRatio; }
 
-    public Pokemon setGenderRatio(GenderRatio genderRatio) {
+    public Pokemon setGenderRatio(float male, float female) {
+        GenderRatio genderRatio = new GenderRatio();
+
+        genderRatio.setMale(male);
+        genderRatio.setFemale(female);
+
         this.genderRatio = genderRatio;
         return this;
     }
@@ -192,6 +197,25 @@ public class Pokemon {
     public class GenderRatio {
         private float male;
         private float female;
+
+        public GenderRatio() {
+            this.male = -1;
+            this.female = -1;
+        }
+
+        public float getMale() { return this.male; }
+
+        public GenderRatio setMale(float ratio) {
+            this.male = ratio;
+            return this;
+        }
+
+        public float getFemale() { return this.female; }
+
+        public GenderRatio setFemale(float ratio) {
+            this.female = ratio;
+            return this;
+        }
     }
 
     public class ExperienceGrowth {
