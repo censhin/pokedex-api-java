@@ -9,6 +9,6 @@ public class PokemonResource {
 
     @GET
     @Produces("application/json")
-    public static String get() { return Pokemon.get(); }
+    public static String get() { return PokemonService.get(); }
 
 }
