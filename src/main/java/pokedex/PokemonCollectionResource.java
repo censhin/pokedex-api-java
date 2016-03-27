@@ -1,6 +1,10 @@
 package pokedex;
 
+import org.json.JSONObject;
+
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
@@ -11,6 +15,13 @@ public class PokemonCollectionResource {
     @Produces("application/json")
     public static String get() {
         return PokemonService.get();
+    }
+
+    @POST
+    @Consumes("application/json")
+    public static void post(String payload) {
+        JSONObject body = new JSONObject(payload);
+        PokemonService.post(body);
     }
 
 }
