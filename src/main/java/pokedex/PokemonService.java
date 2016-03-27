@@ -6,10 +6,23 @@ import org.json.JSONArray;
 
 public class PokemonService {
 
+    private static PokemonDao dao = new PokemonDao();
+
     public static String get() {
-        PokemonDao dao = new PokemonDao();
         List<Pokemon> pokemon = dao.get();
         JSONArray payload = new JSONArray(pokemon);
+
+        return "{\"pokemon\": " + payload + "}";
+    }
+
+    public static String get(String name) {
+        List<Pokemon> pokemon = dao.get(name);
+        JSONArray payload = new JSONArray(pokemon);
+
+        if(payload.length() == 1) {
+            return payload.get(0).toString();
+        }
+
         return "{\"pokemon\": " + payload + "}";
     }
 

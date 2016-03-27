@@ -10,6 +10,8 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
+import static com.mongodb.client.model.Filters.eq;
+
 public class PokemonDao {
 
     private static MongoClient client = new MongoClient();
@@ -17,23 +19,32 @@ public class PokemonDao {
 
     public List<Pokemon> get() {
         MongoCursor<Document> cursor = db.getCollection("pokemon").find().iterator();
-        List<Pokemon> pokemons = new ArrayList<>();
+        return this.pokemonIterator(cursor);
+    }
+
+    public List<Pokemon> get(String name) {
+        MongoCursor<Document> cursor = db.getCollection("pokemon").find(eq("name", name)).iterator();
+        return this.pokemonIterator(cursor);
+    }
+
+    private List<Pokemon> pokemonIterator(MongoCursor<Document> cursor) {
+        List<Pokemon> pokemon = new ArrayList<>();
 
         try {
             while (cursor.hasNext()) {
-                pokemons.add(this.toPokemon(cursor.next()));
+                pokemon.add(this.toPokemon(cursor.next()));
             }
         } finally {
             cursor.close();
         }
 
-        return pokemons;
+        return pokemon;
     }
 
-    public Pokemon toPokemon(Document doc) {
+    private Pokemon toPokemon(Document doc) {
         Pokemon poke = new Pokemon();
 
-        Document genderRatio = doc.get("genderRatio", Document.class);
+        Map genderRatio = doc.get("genderRatio", Map.class);
         Document experienceGrowth = doc.get("experienceGrowth", Document.class);
         Document ev = doc.get("ev", Document.class);
         Document evolution = doc.get("evolution", Document.class);
@@ -64,7 +75,7 @@ public class PokemonDao {
         poke.setName(doc.getString("name"));
         poke.setNumber(doc.getInteger("number"));
         poke.setGeneration(doc.getInteger("generation"));
-        poke.setGenderRatio(genderRatio.get("male", Double.class), genderRatio.get("female", Double.class));
+        poke.setGenderRatio(genderRatio);
         poke.setTypes(types);
         poke.setClassification(doc.getString("classification"));
         poke.setHeight(doc.getString("height"));

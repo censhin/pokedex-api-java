@@ -6,7 +6,8 @@ public class PokedexResourceConfig extends ResourceConfig {
 
     public PokedexResourceConfig() {
         register(HealthResource.class);
-        register(PokemonResource.class);
+        register(PokemonCollectionResource.class);
+        register(PokemonMemberResource.class);
     }
 
 }

@@ -9,7 +9,7 @@ public class Pokemon {
     private String name;
     private Integer number;
     private Integer generation;
-    private GenderRatio genderRatio;
+    private Map<String, Double> genderRatio;
     private List<String> types;
     private String classification;
     private String height;
@@ -69,13 +69,14 @@ public class Pokemon {
         this.generation = generation;
     }
 
-    public GenderRatio getGenderRatio() { return this.genderRatio; }
+    public Map<String, Double> getGenderRatio() { return this.genderRatio; }
 
-    public void setGenderRatio(Double male, Double female) {
-        GenderRatio genderRatio = new GenderRatio();
+    public void setGenderRatio(Map ratio) {
 
-        genderRatio.setMale(male);
-        genderRatio.setFemale(female);
+        Map<String, Double> genderRatio = new HashMap<>();
+
+        genderRatio.put("male", ((Double)ratio.get("male")));
+        genderRatio.put("female", ((Double)ratio.get("female")));
 
         this.genderRatio = genderRatio;
     }
@@ -200,28 +201,6 @@ public class Pokemon {
         baseStats.put("speed", ((Integer)stats.get("speed")));
 
         this.baseStats = baseStats;
-    }
-
-    public class GenderRatio {
-        private Double male;
-        private Double female;
-
-        public GenderRatio() {
-            this.male = -1.0;
-            this.female = -1.0;
-        }
-
-        public Double getMale() { return this.male; }
-
-        public void setMale(Double ratio) {
-            this.male = ratio;
-        }
-
-        public Double getFemale() { return this.female; }
-
-        public void setFemale(Double ratio) {
-            this.female = ratio;
-        }
     }
 
     public class ExperienceGrowth {

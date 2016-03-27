@@ -5,10 +5,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 @Path("pokemon")
-public class PokemonResource {
+public class PokemonCollectionResource {
 
     @GET
     @Produces("application/json")
-    public static String get() { return PokemonService.get(); }
+    public static String get() {
+        return PokemonService.get();
+    }
 
 }
