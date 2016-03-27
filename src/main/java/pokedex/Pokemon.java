@@ -1,30 +1,32 @@
 package pokedex;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Pokemon {
 
     private String name;
-    private int number;
-    private int generation;
+    private Integer number;
+    private Integer generation;
     private GenderRatio genderRatio;
     private List<String> types;
     private String classification;
     private String height;
     private String weight;
-    private int captureRate;
-    private int baseEggSteps;
+    private Integer captureRate;
+    private Integer baseEggSteps;
     private List<String> abilities;
     private ExperienceGrowth experienceGrowth;
-    private int baseHappiness;
+    private Integer baseHappiness;
     private EffortValues ev;
-    private boolean skyBattleEligible;
+    private Boolean skyBattleEligible;
 //    private Damage damage; add when Damage class is defined
     private String wildHoldItem;
     private List<String> eggGroups;
     private Evolution evolution;
-    private List<Locations> locations;
-    private BaseStats baseStats;
+    private List<Map<String, String>> locations;
+    private Map<String, Integer> baseStats;
 
     public Pokemon() {
         this.name = null;
@@ -51,201 +53,262 @@ public class Pokemon {
 
     public String getName() { return this.name; }
 
-    public Pokemon setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
-    public int getNumber() { return this.number; }
+    public Integer getNumber() { return this.number; }
 
-    public Pokemon setNumber(int number) {
+    public void setNumber(Integer number) {
         this.number = number;
-        return this;
     }
 
-    public int getGeneration() { return this.generation; }
+    public Integer getGeneration() { return this.generation; }
 
-    public Pokemon setGeneration(int generation) {
+    public void setGeneration(Integer generation) {
         this.generation = generation;
-        return this;
     }
 
     public GenderRatio getGenderRatio() { return this.genderRatio; }
 
-    public Pokemon setGenderRatio(float male, float female) {
+    public void setGenderRatio(Double male, Double female) {
         GenderRatio genderRatio = new GenderRatio();
 
         genderRatio.setMale(male);
         genderRatio.setFemale(female);
 
         this.genderRatio = genderRatio;
-        return this;
     }
 
     public List<String> getTypes() { return this.types; }
 
-    public Pokemon setTypes(List<String> types) {
+    public void setTypes(List<String> types) {
         this.types = types;
-        return this;
     }
 
     public String getClassification() { return this.classification; }
 
-    public Pokemon setClassification(String classification) {
+    public void setClassification(String classification) {
         this.classification = classification;
-        return this;
     }
 
     public String getHeight() { return this.height; }
 
-    public Pokemon setHeight(String height) {
+    public void setHeight(String height) {
         this.height = height;
-        return this;
     }
 
     public String getWeight() { return this.weight; }
 
-    public Pokemon setWeight(String weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
-        return this;
     }
 
-    public int getCaptureRate() { return this.captureRate; }
+    public Integer getCaptureRate() { return this.captureRate; }
 
-    public Pokemon setCaptureRate(int captureRate) {
+    public void setCaptureRate(int captureRate) {
         this.captureRate = captureRate;
-        return this;
     }
 
-    public int getBaseEggSteps() { return this.baseEggSteps; }
+    public Integer getBaseEggSteps() { return this.baseEggSteps; }
 
-    public Pokemon setBaseEggSteps(int baseEggSteps) {
+    public void setBaseEggSteps(int baseEggSteps) {
         this.baseEggSteps = baseEggSteps;
-        return this;
     }
 
     public List<String> getAbilities() { return this.abilities; }
 
-    public Pokemon setAbilities(List<String> abilities) {
+    public void setAbilities(List<String> abilities) {
         this.abilities = abilities;
-        return this;
     }
 
     public ExperienceGrowth getExperienceGrowth() { return this.experienceGrowth; }
 
-    public Pokemon setExperienceGrowth(ExperienceGrowth experienceGrowth) {
+    public void setExperienceGrowth(int points, String rate) {
+        ExperienceGrowth experienceGrowth = new ExperienceGrowth();
+
+        experienceGrowth.setPoints(points);
+        experienceGrowth.setRate(rate);
+
         this.experienceGrowth = experienceGrowth;
-        return this;
     }
 
-    public int getBaseHappiness() { return this.baseHappiness; }
+    public Integer getBaseHappiness() { return this.baseHappiness; }
 
-    public Pokemon setBaseHappiness(int baseHappiness) {
+    public void setBaseHappiness(int baseHappiness) {
         this.baseHappiness = baseHappiness;
-        return this;
     }
 
     public EffortValues getEv() { return this.ev; }
 
-    public Pokemon setEv(EffortValues ev) {
+    public void setEv(String type, int value) {
+        EffortValues ev = new EffortValues();
+
+        ev.setType(type);
+        ev.setValue(value);
+
         this.ev = ev;
-        return this;
     }
 
-    public boolean isSkyBattleEligible() { return this.skyBattleEligible; }
+    public Boolean isSkyBattleEligible() { return this.skyBattleEligible; }
 
-    public Pokemon setSkyBattleEligible(boolean skyBattleEligible) {
+    public void setSkyBattleEligible(boolean skyBattleEligible) {
         this.skyBattleEligible = skyBattleEligible;
-        return this;
     }
 
     public String getWildHoldItem() { return this.wildHoldItem; }
 
-    public Pokemon setWildHoldItem(String wildHoldItem) {
+    public void setWildHoldItem(String wildHoldItem) {
         this.wildHoldItem = wildHoldItem;
-        return this;
     }
 
     public List<String> getEggGroups() { return this.eggGroups; }
 
-    public Pokemon setEggGroups(List<String> eggGroups) {
+    public void setEggGroups(List<String> eggGroups) {
         this.eggGroups = eggGroups;
-        return this;
     }
 
     public Evolution getEvolution() { return this.evolution; }
 
-    public Pokemon setEvolution(Evolution evolution) {
+    public void setEvolution(String name, int number, int level) {
+        Evolution evolution = new Evolution();
+
+
+        evolution.setName(name);
+        evolution.setNumber(number);
+        evolution.setLevel(level);
+
         this.evolution = evolution;
-        return this;
     }
 
-    public List<Locations> getLocations() { return this.locations; }
+    public List<Map<String, String>> getLocations() { return this.locations; }
 
-    public Pokemon setLocations(List<Locations> locations) {
+    public void setLocations(List<Map<String, String>> locations) {
         this.locations = locations;
-        return this;
     }
 
-    public BaseStats getBaseStats() { return this.baseStats; }
+    public Map<String, Integer> getBaseStats() { return this.baseStats; }
 
-    public Pokemon setBaseStats(BaseStats baseStats) {
+    public void setBaseStats(Map stats) {
+        Map<String, Integer> baseStats = new HashMap<>();
+
+        baseStats.put("hp", ((Integer)stats.get("hp")));
+        baseStats.put("attack", ((Integer)stats.get("attack")));
+        baseStats.put("defense", ((Integer)stats.get("defense")));
+        baseStats.put("spAttack", ((Integer)stats.get("spAttack")));
+        baseStats.put("spDefense", ((Integer)stats.get("spDefense")));
+        baseStats.put("speed", ((Integer)stats.get("speed")));
+
         this.baseStats = baseStats;
-        return this;
     }
 
     public class GenderRatio {
-        private float male;
-        private float female;
+        private Double male;
+        private Double female;
 
         public GenderRatio() {
-            this.male = -1;
-            this.female = -1;
+            this.male = -1.0;
+            this.female = -1.0;
         }
 
-        public float getMale() { return this.male; }
+        public Double getMale() { return this.male; }
 
-        public GenderRatio setMale(float ratio) {
+        public void setMale(Double ratio) {
             this.male = ratio;
-            return this;
         }
 
-        public float getFemale() { return this.female; }
+        public Double getFemale() { return this.female; }
 
-        public GenderRatio setFemale(float ratio) {
+        public void setFemale(Double ratio) {
             this.female = ratio;
-            return this;
         }
     }
 
     public class ExperienceGrowth {
         private int points;
         private String rate;
+
+        public ExperienceGrowth() {
+            this.points = -1;
+            this.rate = null;
+        }
+
+        public int getPoints() {
+            return points;
+        }
+
+        public void setPoints(int points) {
+            this.points = points;
+        }
+
+        public String getRate() {
+            return rate;
+        }
+
+        public void setRate(String rate) {
+            this.rate = rate;
+        }
     }
 
     public class EffortValues {
         private String type;
         private int value;
+
+        public EffortValues() {
+            this.type = null;
+            this.value = -1;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        public void setValue(int value) {
+            this.value = value;
+        }
     }
 
     public class Evolution {
         private String name;
         private int number;
         private int level;
-    }
 
-    public class Locations {
-        private String game;
-        private String location;
-    }
+        public Evolution() {
+            this.name = null;
+            this.number = -1;
+            this.level = -1;
+        }
 
-    public class BaseStats {
-        private int hp;
-        private int attack;
-        private int defense;
-        private int spAttack;
-        private int spDefense;
-        private int speed;
-    }
+        public String getName() {
+            return name;
+        }
 
+        public int getNumber() {
+            return number;
+        }
+
+        public int getLevel() {
+            return level;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setNumber(int number) {
+            this.number = number;
+        }
+
+        public void setLevel(int level) {
+            this.level = level;
+        }
+    }
 }

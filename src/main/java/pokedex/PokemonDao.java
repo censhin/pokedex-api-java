@@ -6,7 +6,9 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PokemonDao {
 
@@ -18,7 +20,9 @@ public class PokemonDao {
         List<Pokemon> pokemons = new ArrayList<>();
 
         try {
-            while (cursor.hasNext()) { this.toPokemon(cursor.next()); }
+            while (cursor.hasNext()) {
+                pokemons.add(this.toPokemon(cursor.next()));
+            }
         } finally {
             cursor.close();
         }
@@ -30,6 +34,10 @@ public class PokemonDao {
         Pokemon poke = new Pokemon();
 
         Document genderRatio = doc.get("genderRatio", Document.class);
+        Document experienceGrowth = doc.get("experienceGrowth", Document.class);
+        Document ev = doc.get("ev", Document.class);
+        Document evolution = doc.get("evolution", Document.class);
+        Map baseStats = doc.get("baseStats", Map.class);
 
         List dbTypes = doc.get("types", List.class);
         List<String> types = new ArrayList<>();
@@ -39,26 +47,47 @@ public class PokemonDao {
         List<String> abilities = new ArrayList<>();
         for(Object o : dbAbilities) { abilities.add(o != null ? o.toString() : null); }
 
-        poke.setName(doc.getString("name"))
-            .setNumber(doc.getInteger("number"))
-            .setGeneration(doc.getInteger("generation"))
-            .setGenderRatio(genderRatio.get("male", Float.class), genderRatio.get("female", Float.class))
-            .setTypes(types)
-            .setClassification(doc.getString("classification"))
-            .setHeight(doc.getString("height"))
-            .setWeight(doc.getString("weight"))
-            .setCaptureRate(doc.getInteger("captureRate"))
-            .setBaseEggSteps(doc.getInteger("baseEggSteps"))
-            .setAbilities(abilities)
-//            .setExperienceGrowth(doc.get("experienceGrowth", Pokemon<ExperienceGrowth>))
-            .setBaseHappiness(doc.getInteger("baseHappiness"))
-//            .setEv(doc.get("ev", Class<Pokemon.EffortValues> poke))
-            .setSkyBattleEligible(doc.getBoolean("skyBattleEligible"))
-            .setWildHoldItem(doc.getString("wildHoldItem"))
-//            .setEggGroups(doc.get("eggGroups"))
-//            .setEvolution(doc.get("evolution"))
-//            .setLocations(doc.get("Locations"))
-            /* .setBaseStats(doc.get("baseStats")) */;
+        List dbEggGroups = doc.get("eggGroups", List.class);
+        List<String> eggGroups = new ArrayList<>();
+        for(Object o : dbEggGroups) { eggGroups.add(o != null ? o.toString() : null); }
+
+        List dbLocations = doc.get("locations", List.class);
+        List<Map<String, String>> locations = new ArrayList<>();
+        for(Object o : dbLocations) {
+            if (o instanceof Document) {
+                Map<String, String> m = new HashMap<>();
+                m.put(((Document) o).get("game", String.class), ((Document) o).get("location", String.class));
+                locations.add(m);
+            }
+        }
+
+        poke.setName(doc.getString("name"));
+        poke.setNumber(doc.getInteger("number"));
+        poke.setGeneration(doc.getInteger("generation"));
+        poke.setGenderRatio(genderRatio.get("male", Double.class), genderRatio.get("female", Double.class));
+        poke.setTypes(types);
+        poke.setClassification(doc.getString("classification"));
+        poke.setHeight(doc.getString("height"));
+        poke.setWeight(doc.getString("weight"));
+        poke.setCaptureRate(doc.getInteger("captureRate"));
+        poke.setBaseEggSteps(doc.getInteger("baseEggSteps"));
+        poke.setAbilities(abilities);
+        poke.setExperienceGrowth(
+                experienceGrowth.get("points", Integer.class),
+                experienceGrowth.get("rate", String.class)
+        );
+        poke.setBaseHappiness(doc.getInteger("baseHappiness"));
+        poke.setEv(ev.get("type", String.class), ev.get("value", Integer.class));
+        poke.setSkyBattleEligible(doc.getBoolean("skyBattleEligible"));
+        poke.setWildHoldItem(doc.getString("wildHoldItem"));
+        poke.setEggGroups(eggGroups);
+        poke.setEvolution(
+                evolution.get("name", String.class),
+                evolution.get("number", Integer.class),
+                evolution.get("level", Integer.class)
+        );
+        poke.setLocations(locations);
+        poke.setBaseStats(baseStats);
 
         return poke;
     }

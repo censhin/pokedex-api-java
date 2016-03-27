@@ -2,11 +2,15 @@ package pokedex;
 
 import java.util.List;
 
+import org.json.JSONArray;
+
 public class PokemonService {
 
     public static String get() {
-        List<Pokemon> pokemon = PokemonDao.get();
-        return "{\"pokemon\": " + pokemon + "}";
+        PokemonDao dao = new PokemonDao();
+        List<Pokemon> pokemon = dao.get();
+        JSONArray payload = new JSONArray(pokemon);
+        return "{\"pokemon\": " + payload + "}";
     }
 
 }
