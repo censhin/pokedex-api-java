@@ -17,12 +17,12 @@ public class PokemonDao {
     private static MongoClient client = new MongoClient();
     private static MongoDatabase db = client.getDatabase("pokedex");
 
-    public List<Pokemon> get() {
+    public List<Pokemon> read() {
         MongoCursor<Document> cursor = db.getCollection("pokemon").find().iterator();
         return this.pokemonIterator(cursor);
     }
 
-    public List<Pokemon> get(String name) {
+    public List<Pokemon> read(String name) {
         MongoCursor<Document> cursor = db.getCollection("pokemon").find(eq("name", name)).iterator();
         return this.pokemonIterator(cursor);
     }
