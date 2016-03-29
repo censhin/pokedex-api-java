@@ -13,13 +13,13 @@ public class PokemonCollectionResource {
 
     @GET
     @Produces("application/json")
-    public static String get() {
+    public String get() {
         return PokemonService.get();
     }
 
     @POST
     @Consumes("application/json")
-    public static void post(String payload) {
+    public void post(String payload) {
         JSONObject body = new JSONObject(payload);
         PokemonService.post(body);
     }

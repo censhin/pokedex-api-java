@@ -10,7 +10,7 @@ public class PokemonMemberResource {
 
     @GET
     @Produces("application/json")
-    public static String get(@PathParam("name") String name) {
+    public String get(@PathParam("name") String name) {
         return PokemonService.get(name);
     }
 
