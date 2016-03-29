@@ -1,5 +1,6 @@
 package pokedex;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -72,7 +73,6 @@ public class Pokemon {
     public Map<String, Double> getGenderRatio() { return this.genderRatio; }
 
     public void setGenderRatio(Map ratio) {
-
         Map<String, Double> genderRatio = new HashMap<>();
 
         genderRatio.put("male", ((Double)ratio.get("male")));
@@ -83,7 +83,13 @@ public class Pokemon {
 
     public List<String> getTypes() { return this.types; }
 
-    public void setTypes(List<String> types) {
+    public void setTypes(List typeList) {
+        List<String> types = new ArrayList<>();
+
+        for(Object o : typeList) {
+            types.add(o != null ? o.toString() : null);
+        }
+
         this.types = types;
     }
 
@@ -119,17 +125,23 @@ public class Pokemon {
 
     public List<String> getAbilities() { return this.abilities; }
 
-    public void setAbilities(List<String> abilities) {
+    public void setAbilities(List abilityList) {
+        List<String> abilities = new ArrayList<>();
+
+        for(Object o : abilityList) {
+            abilities.add(o != null ? o.toString() : null);
+        }
+
         this.abilities = abilities;
     }
 
     public ExperienceGrowth getExperienceGrowth() { return this.experienceGrowth; }
 
-    public void setExperienceGrowth(int points, String rate) {
+    public void setExperienceGrowth(Map xpGrowth) {
         ExperienceGrowth experienceGrowth = new ExperienceGrowth();
 
-        experienceGrowth.setPoints(points);
-        experienceGrowth.setRate(rate);
+        experienceGrowth.setPoints((Integer)xpGrowth.get("points"));
+        experienceGrowth.setRate((String)xpGrowth.get("rate"));
 
         this.experienceGrowth = experienceGrowth;
     }
@@ -142,11 +154,11 @@ public class Pokemon {
 
     public EffortValues getEv() { return this.ev; }
 
-    public void setEv(String type, int value) {
+    public void setEv(Map effortValues) {
         EffortValues ev = new EffortValues();
 
-        ev.setType(type);
-        ev.setValue(value);
+        ev.setType((String)effortValues.get("type"));
+        ev.setValue((Integer)effortValues.get("value"));
 
         this.ev = ev;
     }
@@ -165,26 +177,39 @@ public class Pokemon {
 
     public List<String> getEggGroups() { return this.eggGroups; }
 
-    public void setEggGroups(List<String> eggGroups) {
+    public void setEggGroups(List eggGroupList) {
+        List<String> eggGroups = new ArrayList<>();
+
+        for(Object o : eggGroupList) {
+            eggGroups.add(o != null ? o.toString() : null);
+        }
+
         this.eggGroups = eggGroups;
     }
 
     public Evolution getEvolution() { return this.evolution; }
 
-    public void setEvolution(String name, int number, int level) {
+    public void setEvolution(Map evo) {
         Evolution evolution = new Evolution();
 
-
-        evolution.setName(name);
-        evolution.setNumber(number);
-        evolution.setLevel(level);
+        evolution.setName((String)evo.get("name"));
+        evolution.setNumber((Integer)evo.get("number"));
+        evolution.setLevel((Integer)evo.get("level"));
 
         this.evolution = evolution;
     }
 
     public List<Map<String, String>> getLocations() { return this.locations; }
 
-    public void setLocations(List<Map<String, String>> locations) {
+    public void setLocations(List locationList) {
+        List<Map<String, String>> locations = new ArrayList<>();
+
+        for(Object o : locationList) {
+            if (o instanceof Map) {
+                locations.add((Map<String, String>) o);
+            }
+        }
+
         this.locations = locations;
     }
 

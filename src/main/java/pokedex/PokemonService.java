@@ -26,4 +26,8 @@ public class PokemonService {
         return "{\"pokemon\": " + payload + "}";
     }
 
+    public static void post(Pokemon body) {
+        dao.create(body);
+    }
+
 }
