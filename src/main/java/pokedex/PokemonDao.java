@@ -10,6 +10,7 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
 import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Updates.set;
 
 public class PokemonDao {
 
@@ -29,6 +30,12 @@ public class PokemonDao {
     public List<Pokemon> read(String name) {
         MongoCursor<Document> cursor = db.getCollection("pokemon").find(eq("name", name)).iterator();
         return this.pokemonIterator(cursor);
+    }
+
+    public void update(String name, Map<String, ?> body) {
+        for(String key : body.keySet()) {
+            db.getCollection("pokemon").updateOne(eq("name", name), set(key, body.get(key)));
+        }
     }
 
     public void delete(String name) {

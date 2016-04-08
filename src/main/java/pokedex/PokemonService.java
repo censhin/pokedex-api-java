@@ -1,6 +1,7 @@
 package pokedex;
 
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONArray;
 
@@ -28,6 +29,10 @@ public class PokemonService {
 
     public static void post(Pokemon body) {
         dao.create(body);
+    }
+
+    public static void put(String name, Map<String, ?> body) {
+        dao.update(name, body);
     }
 
     public static void delete(String name) {
