@@ -17,8 +17,8 @@ public class PokemonDao {
     private static MongoDatabase db = client.getDatabase("pokedex");
 
     public void create(Pokemon pokemon) {
-        Document d = this.fromPokemon(pokemon);
-        db.getCollection("pokemon").insertOne(d);
+        Document doc = this.fromPokemon(pokemon);
+        db.getCollection("pokemon").insertOne(doc);
     }
 
     public List<Pokemon> read() {
@@ -29,6 +29,10 @@ public class PokemonDao {
     public List<Pokemon> read(String name) {
         MongoCursor<Document> cursor = db.getCollection("pokemon").find(eq("name", name)).iterator();
         return this.pokemonIterator(cursor);
+    }
+
+    public void delete(String name) {
+        db.getCollection("pokemon").deleteOne(eq("name", name));
     }
 
     private List<Pokemon> pokemonIterator(MongoCursor<Document> cursor) {
