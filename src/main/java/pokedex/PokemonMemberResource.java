@@ -1,5 +1,6 @@
 package pokedex;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -12,6 +13,11 @@ public class PokemonMemberResource {
     @Produces("application/json")
     public String get(@PathParam("name") String name) {
         return PokemonService.get(name);
+    }
+
+    @DELETE
+    public void delete(@PathParam("name") String name) {
+        PokemonService.delete(name);
     }
 
 }

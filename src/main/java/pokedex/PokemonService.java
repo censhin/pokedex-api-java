@@ -30,4 +30,8 @@ public class PokemonService {
         dao.create(body);
     }
 
+    public static void delete(String name) {
+        dao.delete(name);
+    }
+
 }
