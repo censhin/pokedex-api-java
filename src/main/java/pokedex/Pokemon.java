@@ -52,25 +52,33 @@ public class Pokemon {
         this.baseStats = null;
     }
 
-    public String getName() { return this.name; }
+    public String getName() {
+        return this.name;
+    }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public Integer getNumber() { return this.number; }
+    public Integer getNumber() {
+        return this.number;
+    }
 
     public void setNumber(Integer number) {
         this.number = number;
     }
 
-    public Integer getGeneration() { return this.generation; }
+    public Integer getGeneration() {
+        return this.generation;
+    }
 
     public void setGeneration(Integer generation) {
         this.generation = generation;
     }
 
-    public Map<String, Double> getGenderRatio() { return this.genderRatio; }
+    public Map<String, Double> getGenderRatio() {
+        return this.genderRatio;
+    }
 
     public void setGenderRatio(Map ratio) {
         Map<String, Double> genderRatio = new HashMap<>();
@@ -81,7 +89,9 @@ public class Pokemon {
         this.genderRatio = genderRatio;
     }
 
-    public List<String> getTypes() { return this.types; }
+    public List<String> getTypes() {
+        return this.types;
+    }
 
     public void setTypes(List typeList) {
         List<String> types = new ArrayList<>();
@@ -93,37 +103,49 @@ public class Pokemon {
         this.types = types;
     }
 
-    public String getClassification() { return this.classification; }
+    public String getClassification() {
+        return this.classification;
+    }
 
     public void setClassification(String classification) {
         this.classification = classification;
     }
 
-    public String getHeight() { return this.height; }
+    public String getHeight() {
+        return this.height;
+    }
 
     public void setHeight(String height) {
         this.height = height;
     }
 
-    public String getWeight() { return this.weight; }
+    public String getWeight() {
+        return this.weight;
+    }
 
     public void setWeight(String weight) {
         this.weight = weight;
     }
 
-    public Integer getCaptureRate() { return this.captureRate; }
+    public Integer getCaptureRate() {
+        return this.captureRate;
+    }
 
     public void setCaptureRate(int captureRate) {
         this.captureRate = captureRate;
     }
 
-    public Integer getBaseEggSteps() { return this.baseEggSteps; }
+    public Integer getBaseEggSteps() {
+        return this.baseEggSteps;
+    }
 
     public void setBaseEggSteps(int baseEggSteps) {
         this.baseEggSteps = baseEggSteps;
     }
 
-    public List<String> getAbilities() { return this.abilities; }
+    public List<String> getAbilities() {
+        return this.abilities;
+    }
 
     public void setAbilities(List abilityList) {
         List<String> abilities = new ArrayList<>();
@@ -135,7 +157,9 @@ public class Pokemon {
         this.abilities = abilities;
     }
 
-    public ExperienceGrowth getExperienceGrowth() { return this.experienceGrowth; }
+    public ExperienceGrowth getExperienceGrowth() {
+        return this.experienceGrowth;
+    }
 
     public void setExperienceGrowth(Map xpGrowth) {
         ExperienceGrowth experienceGrowth = new ExperienceGrowth();
@@ -146,13 +170,17 @@ public class Pokemon {
         this.experienceGrowth = experienceGrowth;
     }
 
-    public Integer getBaseHappiness() { return this.baseHappiness; }
+    public Integer getBaseHappiness() {
+        return this.baseHappiness;
+    }
 
     public void setBaseHappiness(int baseHappiness) {
         this.baseHappiness = baseHappiness;
     }
 
-    public EffortValues getEv() { return this.ev; }
+    public EffortValues getEv() {
+        return this.ev;
+    }
 
     public void setEv(Map effortValues) {
         EffortValues ev = new EffortValues();
@@ -163,19 +191,25 @@ public class Pokemon {
         this.ev = ev;
     }
 
-    public Boolean isSkyBattleEligible() { return this.skyBattleEligible; }
+    public Boolean isSkyBattleEligible() {
+        return this.skyBattleEligible;
+    }
 
     public void setSkyBattleEligible(boolean skyBattleEligible) {
         this.skyBattleEligible = skyBattleEligible;
     }
 
-    public String getWildHoldItem() { return this.wildHoldItem; }
+    public String getWildHoldItem() {
+        return this.wildHoldItem;
+    }
 
     public void setWildHoldItem(String wildHoldItem) {
         this.wildHoldItem = wildHoldItem;
     }
 
-    public List<String> getEggGroups() { return this.eggGroups; }
+    public List<String> getEggGroups() {
+        return this.eggGroups;
+    }
 
     public void setEggGroups(List eggGroupList) {
         List<String> eggGroups = new ArrayList<>();
@@ -213,7 +247,9 @@ public class Pokemon {
         this.locations = locations;
     }
 
-    public Map<String, Integer> getBaseStats() { return this.baseStats; }
+    public Map<String, Integer> getBaseStats() {
+        return this.baseStats;
+    }
 
     public void setBaseStats(Map stats) {
         Map<String, Integer> baseStats = new HashMap<>();
